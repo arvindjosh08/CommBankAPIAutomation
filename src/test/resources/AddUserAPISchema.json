@@ -1,0 +1,33 @@
+{
+	"definitions": {},
+	"$schema": "http://json-schema.org/draft-07/schema#", 
+	"$id": "https://example.com/object1653210198.json", 
+	"title": "Root", 
+	"type": "object",
+	"required": [
+		"status",
+		"message"
+	],
+	"properties": {
+		"status": {
+			"$id": "#root/status", 
+			"title": "Status", 
+			"type": "string",
+			"default": "",
+			"examples": [
+				"success"
+			],
+			"pattern": "^.*$"
+		},
+		"message": {
+			"$id": "#root/message", 
+			"title": "Message", 
+			"type": "string",
+			"default": "",
+			"examples": [
+				"User added."
+			],
+			"pattern": "^.*$"
+		}
+	}
+}

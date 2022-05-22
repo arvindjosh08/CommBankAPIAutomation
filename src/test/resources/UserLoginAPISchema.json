@@ -1,0 +1,33 @@
+{
+	"definitions": {},
+	"$schema": "http://json-schema.org/draft-07/schema#", 
+	"$id": "https://example.com/object1653214267.json", 
+	"title": "Root", 
+	"type": "object",
+	"required": [
+		"token",
+		"expiresIn"
+	],
+	"properties": {
+		"token": {
+			"$id": "#root/token", 
+			"title": "Token", 
+			"type": "string",
+			"default": "",
+			"examples": [
+				"eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNyeXB0byIsImV4cGlyZXNJbiI6IjMgbWluIiwiaWF0IjoxNjUzMjE0MTk5LCJleHAiOjE2NTMyMTQzNzl9.ccMa8H5NfDcVcnyxWnv2XPlsfK9tzyzqMpDgPDQWF_v0DkmAA-o4Du2f64pSA6dNq3GwHxnVPX7-4lGFwQS25A"
+			],
+			"pattern": "^.*$"
+		},
+		"expiresIn": {
+			"$id": "#root/expiresIn", 
+			"title": "Expiresin", 
+			"type": "string",
+			"default": "",
+			"examples": [
+				"3 min"
+			],
+			"pattern": "^.*$"
+		}
+	}
+}

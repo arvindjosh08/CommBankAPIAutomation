@@ -1,0 +1,39 @@
+{
+	"definitions": {},
+	"$schema": "http://json-schema.org/draft-07/schema#", 
+	"$id": "https://example.com/object1653216067.json", 
+	"title": "Root", 
+	"type": "array",
+	"default": [],
+	"items":{
+		"$id": "#root/items", 
+		"title": "Items", 
+		"type": "object",
+		"required": [
+			"username",
+			"score"
+		],
+		"properties": {
+			"username": {
+				"$id": "#root/items/username", 
+				"title": "Username", 
+				"type": "string",
+				"default": "",
+				"examples": [
+					"crypto"
+				],
+				"pattern": "^.*$"
+			},
+			"score": {
+				"$id": "#root/items/score", 
+				"title": "Score", 
+				"type": "integer",
+				"examples": [
+					800
+				],
+				"default": 0
+			}
+		}
+	}
+
+}
