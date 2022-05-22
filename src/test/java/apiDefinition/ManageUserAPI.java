@@ -15,7 +15,11 @@ public class ManageUserAPI {
 	@Step("Calling ManageUser API to verify the user login authentication token ")
 	public void ManageUser(String token) {
 
-		response = SerenityRest.given().header("authorization", token).contentType("application/json").when()
+		response = SerenityRest
+				.given()
+				.header("authorization", token)
+				.contentType("application/json")
+				.when()
 				.get(MANAGE_USER_ENDPOINT);
 
 	}

@@ -26,7 +26,11 @@ public class GetTokenAPI {
 		data.put("key", uuid);
 		data.put("email", "abcd@gmail.com");
 
-		response = SerenityRest.given().contentType("application/json").body(data.toString()).post(GET_TOKEN_ENDPOINT);
+		response = SerenityRest
+				.given()
+				.contentType("application/json")
+				.body(data.toString())
+				.post(GET_TOKEN_ENDPOINT);
 
 	}
 
