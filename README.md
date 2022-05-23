@@ -4,6 +4,7 @@
 We have used Serenity BDD REST Assured Cucumber framework for API automation. Below regression scenarios are covered for all the API's
 * Status codes of all the api's for positive flow
 * JSON schema validation of all the api's response where ever applicable. JSON Schema validation is achieved by validating with .json files stored in src/test/resources folder
+* Creation of user with more than 400 points on the leaderboard 
 
 Below is the structure of the project
 * feature file is located under src/test/resources/features folder
