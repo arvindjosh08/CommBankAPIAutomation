@@ -3,7 +3,7 @@ package apiDefinition;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.junit.Assert.assertThat;
 
-import java.util.UUID;
+
 
 import org.json.JSONObject;
 
@@ -15,7 +15,7 @@ import net.thucydides.core.util.EnvironmentVariables;
 
 public class UserLoginAPI {
 
-	private static String USER_LOGIN_ENDPOINT = "https://supervillain.herokuapp.com/auth/user/login";
+	
 	public Response response;
 	private EnvironmentVariables environmentVariables;
 
@@ -28,11 +28,13 @@ public class UserLoginAPI {
 
 		String passtoken =  EnvironmentSpecificConfiguration.from(environmentVariables)
                 .getProperty("access.token");
+		String userlogin =  EnvironmentSpecificConfiguration.from(environmentVariables)
+                .getProperty("user.login.endpoint");
 		response = SerenityRest.given()
 				.header("authorization",passtoken)
 				.contentType("application/json")
 				.body(data.toString())
-				.post(USER_LOGIN_ENDPOINT);
+				.post(userlogin);
 
 		return response.getBody().jsonPath().getJsonObject("token");
 

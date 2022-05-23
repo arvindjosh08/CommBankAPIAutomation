@@ -12,7 +12,6 @@ import net.thucydides.core.util.EnvironmentVariables;
 
 public class GetUserAPI {
 
-	private static String GET_USER_ENDPOINT = "https://supervillain.herokuapp.com/v1/user";
 	public Response response;
 	private EnvironmentVariables environmentVariables;
 
@@ -21,13 +20,15 @@ public class GetUserAPI {
 		
 		String passtoken =  EnvironmentSpecificConfiguration.from(environmentVariables)
                 .getProperty("access.token");
+		String getuser =  EnvironmentSpecificConfiguration.from(environmentVariables)
+                .getProperty("user.endpoint");
 
 		try {
 			response = SerenityRest.given()
 					.header("authorization",passtoken)
 					.contentType("application/json")
 					.when()
-					.get(GET_USER_ENDPOINT);
+					.get(getuser);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

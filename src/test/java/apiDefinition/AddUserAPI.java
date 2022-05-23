@@ -15,7 +15,7 @@ import net.thucydides.core.util.EnvironmentVariables;
 
 public class AddUserAPI {
 
-	private static String ADD_USER_ENDPOINT = "https://supervillain.herokuapp.com/v1/user";
+	
 	public Response response;
 	private EnvironmentVariables environmentVariables;
 
@@ -26,16 +26,18 @@ public class AddUserAPI {
 		UUID uuid = UUID.randomUUID();
 		JSONObject data = new JSONObject();
 		data.put("username", uuid);
-		data.put("score", "600");
+		data.put("score", "5000");
 		
 		String passtoken =  EnvironmentSpecificConfiguration.from(environmentVariables)
                 .getProperty("access.token");
+		String adduser =  EnvironmentSpecificConfiguration.from(environmentVariables)
+                .getProperty("user.endpoint");
 
 		response = SerenityRest.given()
 				.header("authorization",passtoken)
 				.contentType("application/json")
 				.body(data.toString())
-				.post(ADD_USER_ENDPOINT);
+				.post(adduser);
 
 	}
 

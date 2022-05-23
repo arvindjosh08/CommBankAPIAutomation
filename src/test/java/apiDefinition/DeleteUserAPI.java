@@ -1,11 +1,6 @@
 package apiDefinition;
 
-import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
-import static org.junit.Assert.assertThat;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 import io.restassured.response.Response;
 import net.serenitybdd.core.environment.EnvironmentSpecificConfiguration;
@@ -15,7 +10,7 @@ import net.thucydides.core.util.EnvironmentVariables;
 
 public class DeleteUserAPI {
 
-	private static String DELETE_USER_ENDPOINT = "https://supervillain.herokuapp.com/v1/user";
+	
 	public Response response;
 	private EnvironmentVariables environmentVariables;
 		
@@ -25,13 +20,15 @@ public class DeleteUserAPI {
 		
 		String passtoken =  EnvironmentSpecificConfiguration.from(environmentVariables)
                 .getProperty("access.token");
+		String deleteuser =  EnvironmentSpecificConfiguration.from(environmentVariables)
+                .getProperty("user.endpoint");
 
 		response = SerenityRest.given()
 				.header("authorization",passtoken)
 				.header("delete-key","delete-key")
 				.contentType("application/json")
 				.when()
-				.delete(DELETE_USER_ENDPOINT);
+				.delete(deleteuser);
 
 	}
 

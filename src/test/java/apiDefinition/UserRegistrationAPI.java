@@ -12,7 +12,7 @@ import net.thucydides.core.util.EnvironmentVariables;
 
 public class UserRegistrationAPI {
 
-	private static String USER_REGISTRATION_ENDPOINT = "https://supervillain.herokuapp.com/auth/user/register";
+	
 	public Response response;
 	private EnvironmentVariables environmentVariables;
 
@@ -26,11 +26,13 @@ public class UserRegistrationAPI {
 		
 		String passtoken =  EnvironmentSpecificConfiguration.from(environmentVariables)
                 .getProperty("access.token");
+		String userregistration =  EnvironmentSpecificConfiguration.from(environmentVariables)
+                .getProperty("user.registration.endpoint");
 		response = SerenityRest.given()
 				.header("authorization",passtoken)
 				.contentType("application/json")
 				.body(data.toString())
-				.post(USER_REGISTRATION_ENDPOINT);
+				.post(userregistration);
 
 	}
 
