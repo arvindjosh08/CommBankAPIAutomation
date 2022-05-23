@@ -8,13 +8,16 @@ import java.util.UUID;
 import org.json.JSONObject;
 
 import io.restassured.response.Response;
+import net.serenitybdd.core.environment.EnvironmentSpecificConfiguration;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.util.EnvironmentVariables;
 
 public class UserLoginAPI {
 
 	private static String USER_LOGIN_ENDPOINT = "https://supervillain.herokuapp.com/auth/user/login";
 	public Response response;
+	private EnvironmentVariables environmentVariables;
 
 	@Step("Calling UserLogin API to generate access token to login")
 	public String userLogin() {
@@ -23,8 +26,10 @@ public class UserLoginAPI {
 		data.put("username", "crypto");
 		data.put("password", "crypto");
 
+		String passtoken =  EnvironmentSpecificConfiguration.from(environmentVariables)
+                .getProperty("access.token");
 		response = SerenityRest.given()
-				.header("authorization","eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJyYW0iLCJlbWFpbCI6ImFydmluZGpvc2gwOEBnbWFpbC5jb20iLCJpYXQiOjE2NTMxNTI5NjQsImV4cCI6MTY1MzQxMjE2NH0.PMTwm-SUT_5OsI0cYhK6W9XS1t5Zc6frAvb_zKfQO-Kacnx-ry9uq6cRrKz-kwnrqyYginWPWSb-UH5bX8Sg6A")
+				.header("authorization",passtoken)
 				.contentType("application/json")
 				.body(data.toString())
 				.post(USER_LOGIN_ENDPOINT);

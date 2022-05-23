@@ -1,7 +1,17 @@
 
 # API automation framework for SuperHeroes and SuperVillain project
 
-We have used Serenity BDD REST Assured Cucumber framework for API automation. We are verifying status code of all the API's for a positive scenario. In addition to this, we are also validating the JSON schema of all the api response where ever applicable.
+We have used Serenity BDD REST Assured Cucumber framework for API automation. Below regression scenarios are covered for all the API's
+* Status codes of all the api's for positive flow
+* JSON schema validation of all the api's response where ever applicable. JSON Schema validation is achieved by validating with .json files stored in src/test/resources folder
+
+Below is the structure of the project
+* feature file is located under src/test/resources/features folder
+* Step definition file/glue file is located under stepDefinition package
+* Cucumber runner file file is located under runner package
+* API code is located under apiDefinition package
+* access token is placed in serenity.conf file which is located under src/test/resources/serenity.conf
+* JSON Schema of all the api's are located under src/test/resources folder
 
 
 ## Tools
@@ -11,8 +21,6 @@ We have used Serenity BDD REST Assured Cucumber framework for API automation. We
 * REST assured
 * JUnit
 * Serenity BDD 
-* Serenity HTML reports
-* JSON schemas of all the api's are placed under src/test/resources folder for JSON schema validation of API responses.
 
 ## Requirements
 
